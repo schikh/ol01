@@ -1,10 +1,46 @@
-<div id="map" style="height: calc(100% - 26px);">
+<div id="map" style="height: calc(100% - 56px);">
 </div>
 <div>
+    <p>xxx</p>
     <button ng-click="vm.doBounce(vm.rome);">Bounce To Rome</button>
     <span>Position: {{vm.position[0] | number:4}} - {{vm.position[1] | number:4}}</span>        
-    <select ng-model="vm.type" ng-change="vm.typeChanged()" ng-options="x for x in vm.types">
+    <select ng-model="vm.type" ng-change="vm.typeChanged()" ng-options="type for type in vm.types">
     </select>
+
+    <ul class="toolbar">
+        <li><i class="menu-icon fa fa-bars"></i></li>
+        <li><i class="menu-icon fa fa-bars"></i></li>
+        <li><i class="menu-icon fa fa-bars"></i></li>
+    </ul>
 </div>
 
+    
+<style>
+    
+ul.toolbar li, ul.toolbar li a { 
+    display:block;
+    xwidth:30px;
+    height:10px;
+    text-align:center;
+    background-position:0 0;
+    font-size: 18px;
+    padding-right: 8px;
+    background-color:pink;
+}
 
+ul.toolbar {
+ display: inline-block;
+    background-color:blue;
+}
+
+ul.toolbar li {
+    float:left;
+}
+
+/* roll over - move the background image by the height of the button (100px) */
+ul.toolbar li a:hover { background-color:green; }
+
+/* active state - move the background image by twice height of the button (200px) */
+ul.toolbar li a.active, ul.toolbar li a.active:hover { background-color:red; }
+
+</style>
