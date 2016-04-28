@@ -1,40 +1,61 @@
-<div id="map" style="height: calc(100% - 56px);">
+<div id="map" style="height: calc(100% - 156px);">
 </div>
 <div>
     <p>xxx</p>
+    <ul class="toolbar">
+        <li><i class="menu-icon fa fa-bars"></i></li>
+        <li><i class="menu-icon fa fa-bars">X</i></li>
+        <li><i class="menu-icon fa fa-bars"></i></li>
+        <li><i class="menu-icon fa fa-bars"></i></li>        
+    </ul>
     <button ng-click="vm.doBounce(vm.rome);">Bounce To Rome</button>
     <span>Position: {{vm.position[0] | number:4}} - {{vm.position[1] | number:4}}</span>        
     <select ng-model="vm.type" ng-change="vm.typeChanged()" ng-options="type for type in vm.types">
     </select>
 
-    <ul class="toolbar">
-        <li><i class="menu-icon fa fa-bars"></i></li>
-        <li><i class="menu-icon fa fa-bars"></i></li>
-        <li><i class="menu-icon fa fa-bars"></i></li>
-    </ul>
 </div>
 
     
 <style>
-    
-ul.toolbar li, ul.toolbar li a { 
-    display:block;
-    xwidth:30px;
-    height:10px;
-    text-align:center;
-    background-position:0 0;
-    font-size: 18px;
-    padding-right: 8px;
-    background-color:pink;
+ul.toolbar2 {
+    /*list-style-type : none; */
+    /* Car sinon les puces se placent n'importe où */
+    display: inline-block;
+    background-color:pink;  
+    -webkit-padding-start: 0px;      
 }
+
+/* Je sélectionne les <li> du menu horizontal */
+ul.toolbar2 li { 
+    display : inline;
+     /*display: inline-block;*/
+    background-color:blue;
+    font-size: 24px;
+    /*width:50px;*/
+    margin:5px;
+    padding:6px;
+}    
+
 
 ul.toolbar {
- display: inline-block;
+    list-style-type : none;
+    display: inline-block;
     background-color:blue;
-}
-
-ul.toolbar li {
+    -webkit-padding-start: 0px;       
+}  
+    
+ul.toolbar li { 
+    /*display:block;*/
+    width:60px;
+    height:60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 28px;
+    background-color:pink;
+    margin:5px;
     float:left;
+    border-style: solid;
+    border-color: #ff0000 #0000ff;    
 }
 
 /* roll over - move the background image by the height of the button (100px) */
@@ -44,3 +65,5 @@ ul.toolbar li a:hover { background-color:green; }
 ul.toolbar li a.active, ul.toolbar li a.active:hover { background-color:red; }
 
 </style>
+
+
