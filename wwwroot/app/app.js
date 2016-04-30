@@ -29,12 +29,4 @@
                     };
                 }]);
     });
-    
-    app.controller("toolbarController", ["$scope", function ($scope) {
-        $scope.toggle = false;
-
-        $scope.toggleSidebar = function () {
-            $scope.toggle = !$scope.toggle;
-        };
-    }]);
 }());

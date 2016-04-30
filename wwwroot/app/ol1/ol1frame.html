@@ -1,20 +1,9 @@
-<div id="sidebar-wrapper" ng-class="{'open': toggle}">
-    <ul class="sidebar">
-        <li class="sidebar-main">
-            <a ng-click="toggleSidebar()">
-                XXXXXXXXX
-                <i class="menu-icon fa fa-bars"></i>
-            </a>
-        </li>
-        <li class="sidebar-list">
-            <a href="/">XXXXX</a>
-        </li>
-        <li class="sidebar-list">
-            <a href="#" ng-click="showSystemStatus = !showSystemStatus">
-                System Status
-            </a>
-        </li>
-    </ul>
+<div id="sidebar-wrapper" ng-class="{'open': vm.frame.getValue()}" ui-view="sidebar">
 </div>
-<div id="main-area-wrapper" ng-class="{'wide': toggle}" ui-view="map">
+<div id="main-area-wrapper" ng-class="{'wide': vm.frame.getValue()}">
+    <div style="height: calc(100% - 156px);" ui-view="map">
+    </div>
+    <div ui-view="toolbar">
+    </div>
 </div>
+

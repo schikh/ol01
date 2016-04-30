@@ -20,17 +20,25 @@
                     views: {
                         '@': { 
                             templateUrl: 'app/ol1/ol1frame.html', 
-                            controller: 'toolbarController as vm'
+                            controller: 'frame as vm'
                         }
                     }
                 })                
                 .state('ol1.x', {
                     url: '/x',
                     views: {
+                        'sidebar': {
+                            templateUrl: 'app/ol1/sidebar.html',
+                            controller: 'sidebar as vm'
+                        },
                         'map': {
-                            templateUrl: 'app/ol1/ol11EditView.html',
+                            templateUrl: 'app/ol1/map.html',
                             controller: 'ol11EditCtrl as vm'
-                        }
+                        },                       
+                        'toolbar': {
+                            templateUrl: 'app/ol1/toolbar.html',
+                            controller: 'toolbar as vm'
+                        } 
                     }
                 })
                 
