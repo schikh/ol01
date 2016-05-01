@@ -1,18 +1,24 @@
     <div>
         <ul class="toolbar">
             <li>
-                <a ng-click="vm.frame.toggleSidebar()">
+                <a ng-click="vm.frame.toggleSidebar('sidebar')">
                     <i class="menu-icon fa fa-bars"></i>
                 </a>                       
             </li>
+            <li>
+                <a ng-click="vm.frame.toggleSidebar('layerbar')">
+                    <i class="menu-icon fa fa-bars"></i>
+                </a>                       
+            </li>            
             <li><i class="menu-icon fa fa-bars"></i></li>
             <li><i class="menu-icon fa fa-bars"></i></li>
             <li><i class="menu-icon fa fa-bars"></i></li>        
         </ul>
-        <button ng-click="vm.doBounce(vm.rome);">Bounce To Rome</button>
+<!--        <button ng-click="vm.doBounce(vm.rome);">Bounce To Rome</button>
         <span>Position: {{vm.position[0] | number:4}} - {{vm.position[1] | number:4}}</span>        
         <select ng-model="vm.type" ng-change="vm.typeChanged()" ng-options="type for type in vm.types">
         </select>
+-->        
     </div>
 
       

@@ -9,13 +9,24 @@
     
     angular.module('ngeoSchemaModule')
         .factory('frame2', [function () {
+        var activeSidebarId = null;
         var value = false;  
         return {
-            getValue: function () {
-                return value;
+            sidebarActivated: function () {
+                return activeSidebarId != null;
             },
-            toggleSidebar: function () {
-                value = !value;
+            sidebarActive: function (sidebarId) {
+                return sidebarId == activeSidebarId;
+            },
+            toggleSidebar: function (sidebarId) {
+                if (sidebarId == activeSidebarId)
+                {
+                    activeSidebarId = null;
+                }
+                else
+                {
+                    activeSidebarId = sidebarId;
+                }
             }
         };
     }]);

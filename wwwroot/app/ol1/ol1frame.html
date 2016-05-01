@@ -1,7 +1,9 @@
-<div id="sidebar-wrapper" ng-class="{'open': vm.frame.getValue()}" ui-view="sidebar">
+<div class="sidebar-wrapper" ng-class="{'open': vm.frame.sidebarActive('sidebar')}" ui-view="sidebar">
 </div>
-<div id="main-area-wrapper" ng-class="{'wide': vm.frame.getValue()}">
-    <div style="height: calc(100% - 156px);" ui-view="map">
+<div class="sidebar-wrapper" ng-class="{'open': vm.frame.sidebarActive('layerbar')}" ui-view="layerbar">
+</div>
+<div id="main-area-wrapper" ng-class="{'wide': vm.frame.sidebarActivated()}">
+    <div style="height: calc(100% - 36px);" ui-view="map">
     </div>
     <div ui-view="toolbar">
     </div>

@@ -432,21 +432,21 @@
       });
 
         var layers = [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          }),
-          new ol.layer.VectorTile({
-            source: new ol.source.VectorTile({
-              format: format,
-              tileGrid: tileGrid,
-              url: 'http://{a-c}.tile.openstreetmap.us/vectiles-water-areas/{z}/{x}/{y}.topojson'
-            }),
-            style: new ol.style.Style({
-              fill: new ol.style.Fill({
-                color: '#9db9e8'
-              })
-            })
-          }),
+          // new ol.layer.Tile({
+          //   source: new ol.source.OSM()
+          // }),
+          // new ol.layer.VectorTile({
+          //   source: new ol.source.VectorTile({
+          //     format: format,
+          //     tileGrid: tileGrid,
+          //     url: 'http://{a-c}.tile.openstreetmap.us/vectiles-water-areas/{z}/{x}/{y}.topojson'
+          //   }),
+          //   style: new ol.style.Style({
+          //     fill: new ol.style.Fill({
+          //       color: '#9db9e8'
+          //     })
+          //   })
+          // }),
           new ol.layer.VectorTile({
             source: new ol.source.VectorTile({
               format: format,
@@ -462,7 +462,7 @@
               if (!style) {
                 var color, width;
                 if (railway) {
-                  color = '#7de';
+                  color = 'red';
                   width = 1;
                 } else {
                   color = roadColor[kind];
@@ -479,57 +479,57 @@
               }
               return style;
             }
-          }),
-          new ol.layer.VectorTile({
-            source: new ol.source.VectorTile({
-              format: format,
-              tileGrid: tileGrid,
-              url: 'http://{a-c}.tile.openstreetmap.us/vectiles-buildings/{z}/{x}/{y}.topojson'
-            }),
-            style: function(f, resolution) {
-              return (resolution < 10) ? buildingStyle : null;
-            }
-          }),
-          new ol.layer.VectorTile({
-            source: new ol.source.VectorTile({
-              format: format,
-              tileGrid: tileGrid,
-              url: 'http://{a-c}.tile.openstreetmap.us/vectiles-land-usages/{z}/{x}/{y}.topojson'
-            }),
-            visible: false,
-            style: function(feature) {
-              var kind = feature.get('kind');
-              var styleKey = kind;
-              var style = landuseStyleCache[styleKey];
-              if (!style) {
-                var color, width;
-                color = {
-                  'parking': '#ddd',
-                  'industrial': '#aaa',
-                  'urban area': '#aaa',
-                  'park': '#76C759',
-                  'school': '#DA10E7',
-                  'garden': '#76C759',
-                  'pitch': '#D58F8D',
-                  'scrub': '#3E7D28',
-                  'residential': '#4C9ED9'
-                }[kind];
-                width = kind == 'highway' ? 1.5 : 1;
-                style = new ol.style.Style({
-                  stroke: new ol.style.Stroke({
-                    color: color,
-                    width: width
-                  }),
-                  fill: new ol.style.Fill({
-                    color: color,
-                    opacity: 0.5
-                  })
-                });
-                landuseStyleCache[styleKey] = style;
-              }
-              return style;
-            }
           })
+          // new ol.layer.VectorTile({
+          //   source: new ol.source.VectorTile({
+          //     format: format,
+          //     tileGrid: tileGrid,
+          //     url: 'http://{a-c}.tile.openstreetmap.us/vectiles-buildings/{z}/{x}/{y}.topojson'
+          //   }),
+          //   style: function(f, resolution) {
+          //     return (resolution < 10) ? buildingStyle : null;
+          //   }
+          // })
+          // new ol.layer.VectorTile({
+          //   source: new ol.source.VectorTile({
+          //     format: format,
+          //     tileGrid: tileGrid,
+          //     url: 'http://{a-c}.tile.openstreetmap.us/vectiles-land-usages/{z}/{x}/{y}.topojson'
+          //   }),
+          //   visible: false,
+          //   style: function(feature) {
+          //     var kind = feature.get('kind');
+          //     var styleKey = kind;
+          //     var style = landuseStyleCache[styleKey];
+          //     if (!style) {
+          //       var color, width;
+          //       color = {
+          //         'parking': '#ddd',
+          //         'industrial': '#aaa',
+          //         'urban area': '#aaa',
+          //         'park': '#76C759',
+          //         'school': '#DA10E7',
+          //         'garden': '#76C759',
+          //         'pitch': '#D58F8D',
+          //         'scrub': '#3E7D28',
+          //         'residential': '#4C9ED9'
+          //       }[kind];
+          //       width = kind == 'highway' ? 1.5 : 1;
+          //       style = new ol.style.Style({
+          //         stroke: new ol.style.Stroke({
+          //           color: color,
+          //           width: width
+          //         }),
+          //         fill: new ol.style.Fill({
+          //           color: color,
+          //           opacity: 0.5
+          //         })
+          //       });
+          //       landuseStyleCache[styleKey] = style;
+          //     }
+          //     return style;
+          //   }
+          // })
         ];
 
 
@@ -564,6 +564,44 @@
             //   }
         });
 
+
+// ol.source.Vector.prototype.getFeatureInDistance =
+//     function(coordinate, distance) {  
+//     // Find the closet feature with in the given distance
+//     // created from ol.source.Vector.prototype.getClosestFeatureToCoordinate
+//     var x = coordinate[0];
+//     var y = coordinate[1];
+//     var closestFeature = null;
+//     var previousCityBlockDistance = Infinity;
+//     var extent = [x-distance, y-distance, x+distance, y+distance];
+//     this.forEachFeatureInExtent(extent,function(feature) {
+//         var geo = feature.getGeometry();
+//         var coord = geo.getClosestPoint(coordinate);
+//         var minCityBlockDistance = Math.abs(x - coord[0]) + Math.abs(y - coord[1]);
+//         if (minCityBlockDistance <= distance && 
+//             minCityBlockDistance < previousCityBlockDistance) {
+//               previousCityBlockDistance = minCityBlockDistance;
+//               closestFeature = feature;
+//         }
+//     });
+//     return closestFeature;
+// };
+
+        map.on("click", function(e) {
+            // map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
+            //     var x = 0;
+            // });
+             
+            //var pos = map.getLonLatFromPixel(e.xy);  
+            var pos = e.coordinate;      
+            var point =  new OpenLayers.Geometry.Point(pos.lon, pos.lat);
+            var closest =_.min(layers[0].features, function(feature) {
+                console.log(feature.geometry.distanceTo(point)); 
+                return feature.geometry.distanceTo(point);
+            });
+
+        });
+        
         // var draw = new ol.interaction.Draw({
         //     type: 'Polygon',
         //     source: source,
@@ -662,6 +700,12 @@
             addInteraction();
         };
 
-        addInteraction();
+        // addInteraction();
+        
+        var select = new ol.interaction.Select({
+          layers: [layers[0]]
+        });
+
+        map.addInteraction(select);
     }
 } ());

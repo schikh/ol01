@@ -47,22 +47,22 @@ body {
     bottom: 61px;    
 }
 
-#sidebar-wrapper.open-add,
-#sidebar-wrapper.open-remove {
+.sidebar-wrapper.open-add,
+.sidebar-wrapper.open-remove {
     transition: all .3s;
 }
 
-#sidebar-wrapper.open-add-active {
+.sidebar-wrapper.open-add-active {
     margin-left: 0;
     left: 0;
 }
 
-#sidebar-wrapper.open {
+.sidebar-wrapper.open {
     margin-left: 0;
     left: 0;
 }
 
-#sidebar-wrapper {
+.sidebar-wrapper {
     top: 52px;
     margin-left: -250px;
     left: 0px;
