@@ -31,10 +31,10 @@
                             templateUrl: 'app/ol1/sidebar.html',
                             controller: 'sidebar as vm'
                         },
-                        // 'layerbar': {
-                        //     templateUrl: 'app/ol1/layerbar.html',
-                        //     controller: 'layerbar as vm'
-                        // },
+                        'layerbar': {
+                            templateUrl: 'app/ol1/layerbar.html',
+                            controller: 'layerbar as vm'
+                        },
                         'map': {
                             templateUrl: 'app/ol1/map.html',
                             controller: 'ol11EditCtrl as vm'
