@@ -410,14 +410,14 @@
         // });
         // mapLayer2.setOpacity(.5);
 
-
       var format = new ol.format.TopoJSON();
       var tileGrid = ol.tilegrid.createXYZ({maxZoom: 19});
       var roadStyleCache = {};
       var roadColor = {
-        'major_road': '#776',
-        'minor_road': '#ccb',
-        'highway': '#f39'
+        'path': 'pink',
+        'major_road': 'green',
+        'minor_road': 'bleu',
+        'highway': 'red'
       };
       var landuseStyleCache = {};
       var buildingStyle = new ol.style.Style({
@@ -431,6 +431,11 @@
         })
       });
 
+      var sourceVector = new ol.source.VectorTile({
+              format: format,
+              tileGrid: tileGrid,
+              url: 'http://{a-c}.tile.openstreetmap.us/vectiles-highroad/{z}/{x}/{y}.topojson'
+            });
         var layers = [
           // new ol.layer.Tile({
           //   source: new ol.source.OSM()
@@ -448,11 +453,7 @@
           //   })
           // }),
           new ol.layer.VectorTile({
-            source: new ol.source.VectorTile({
-              format: format,
-              tileGrid: tileGrid,
-              url: 'http://{a-c}.tile.openstreetmap.us/vectiles-highroad/{z}/{x}/{y}.topojson'
-            }),
+            source: sourceVector,
             style: function(feature) {
               var kind = feature.get('kind');
               var railway = feature.get('railway');
@@ -591,15 +592,20 @@
             // map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
             //     var x = 0;
             // });
-             
-            //var pos = map.getLonLatFromPixel(e.xy);  
-            var pos = e.coordinate;      
-            var point =  new OpenLayers.Geometry.Point(pos.lon, pos.lat);
-            var closest =_.min(layers[0].features, function(feature) {
-                console.log(feature.geometry.distanceTo(point)); 
-                return feature.geometry.distanceTo(point);
-            });
-
+            var oo; 
+            //var clicked = e.selected[0];
+            var closest = sourceVector.getClosestFeatureToCoordinate(e.coordinate);
+            var closestType = closest.getType();
+            if (closestType === 'Point') {
+                oo = e.selected[0].getGeometry().getCoordinates();
+            }
+            else {
+                var aa = e.selected[0].getGeometry().getExtent();
+                oo = ol.extent.getCenter(aa);
+                
+            }
+            console.log(closest);
+            console.log(oo);
         });
         
         // var draw = new ol.interaction.Draw({
