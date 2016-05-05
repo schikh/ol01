@@ -15,12 +15,11 @@
                 })
                 
                 .state('ol1', {
-                    abstract: true,
+                    //abstract: true,
                     url: '/ol1',
                     views: {
                         '@': { 
-                            templateUrl: 'app/ol1/ol1frame.html', 
-                            controller: 'frame as vm'
+                            templateUrl: 'app/ol1/ol1frame.html'
                         }
                     }
                 })                
@@ -64,15 +63,15 @@
                 //         }
                 //     }
                 // })
-                .state('basicSchema', {
-                    url: '/basicSchema',
-                    views: {
-                        '@': {
-                            templateUrl: 'app/basicSchema/basicSchemaEditView.html',
-                            controller: 'basicSchemaEditCtrl as vm'
-                        }
-                    }
-                })
+                // .state('basicSchema', {
+                //     url: '/basicSchema',
+                //     views: {
+                //         '@': {
+                //             templateUrl: 'app/basicSchema/basicSchemaEditView.html',
+                //             controller: 'basicSchemaEditCtrl as vm'
+                //         }
+                //     }
+                // })
                 .state('customerList', {
                     url: '/customers',
                     views: {
