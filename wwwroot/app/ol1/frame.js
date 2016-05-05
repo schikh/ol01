@@ -133,7 +133,7 @@
         .directive('swToolbarButton', function () {
             return {
                 restrict: 'E',
-             //   template: '',
+                template: '',
                 scope: {
                     title: '@'
                 },

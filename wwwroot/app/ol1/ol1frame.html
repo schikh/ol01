@@ -10,19 +10,20 @@
     </div>
 </div>
 -->
- 
+
 <sw-tabstrip>
   <sw-tabstrip-sidebar>
     <sw-pane title="Bounty Hunters">
       <h4>We don't need that scum</h4>
       <sw-toolbar>
-        <sw-toolbar-button title="Bounty Hunters"/>
-        <sw-toolbar-button title="Dear Star"/>
-        <sw-toolbar-button title="I love you"/>
+        <sw-toolbar-button title="Bounty Hunters" />
+        <sw-toolbar-button title="Dear Star" />
+        <sw-toolbar-button title="I love you" />
       </sw-toolbar>
     </sw-pane>
     <sw-pane title="Dear Star">
       <h4>that's no moon...</h4>
+      
     </sw-pane>
     <sw-pane title="I love you">
       <h4>I know</h4>
@@ -34,14 +35,14 @@
 </sw-tabstrip>
 
 <script type="text/ng-template" id="swToolbar.html">
-    <ul class="toolbar">
-      <li ng-repeat="toolbarButton in toolbarButtons" ng-class="{active: toolbarButton.selected}">
-        <a ng-click="toggle(toolbarButton)">
-          <i class="menu-icon fa" ng-class="{'fa-bars': !toolbarButton.selected, 'fa-remove': toolbarButton.selected}"></i>
-        </a>
-      </li>
-    </ul>
-    <div ng-transclude></div>
+  <ul class="toolbar">
+    <li ng-repeat="toolbarButton in toolbarButtons" ng-class="{active: toolbarButton.selected}">
+      <a ng-click="toggle(toolbarButton)">
+        <i class="menu-icon fa" ng-class="{'fa-bars': !toolbarButton.selected, 'fa-remove': toolbarButton.selected}"></i>
+      </a>
+    </li>
+  </ul>
+  <div ng-transclude></div>
 </script>
 
 <script type="text/ng-template" id="swTabstrip.html">
